@@ -1,11 +1,11 @@
 import random
 
 def compare(truth, tem_guess, remain_trials):
-    tem_guess = round(float(tem_guess))
     """
     比较两数差异
     :return 剩余比较次数
     """
+    tem_guess = round(float(tem_guess)) # to avoid type in float like 62.5
     if tem_guess > truth:
         if remain_trials > 1:
             print("Too high.\nGuess again.")
