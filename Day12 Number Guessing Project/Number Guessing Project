@@ -29,14 +29,14 @@ def guess_procedure(guess, remain_trials):
         if remain_trials == 0:
             print("You've run out of guesses. Refresh the page to run again.")
 
-
 def guess_game(difficulty):
+    print("Welcome to the Number Guessing Game!\nI'm thinking of an integer between 1 and 100.")
     guess = random.randint(1, 100)
     if difficulty == "easy":
         guess_procedure(guess, 10)
     if difficulty == "hard":
         guess_procedure(guess, 5)
 
-print("Welcome to the Number Guessing Game!\nI'm thinking of an integer between 1 and 100.")
+
 difficulty = input("Choose a difficulty level. Type 'easy' or 'hard': ").lower()
 guess_game(difficulty)
