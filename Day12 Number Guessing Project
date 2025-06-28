@@ -1,0 +1,42 @@
+import random
+
+def compare(truth, tem_guess, remain_trials):
+    tem_guess = round(float(tem_guess))
+    """
+    比较两数差异
+    :return 剩余比较次数
+    """
+    if tem_guess > truth:
+        if remain_trials > 1:
+            print("Too high.\nGuess again.")
+        remain_trials -= 1
+    elif tem_guess < truth:
+        if remain_trials > 1:
+            print("Too low.\nGuess again.")
+        remain_trials -= 1
+    elif tem_guess == truth:
+        print(f"You got it! The answer was {tem_guess}.")
+        remain_trials = -1
+    return remain_trials
+
+def guess_procedure(guess, remain_trials):
+    """
+    逐步猜测数字
+    """
+    while remain_trials > 0 :
+        uesr_guess = input(f"You have {remain_trials} attempts remaining to guess the number.\nMake a guess:  ")
+        remain_trials = compare(guess, uesr_guess, remain_trials)
+        if remain_trials == 0:
+            print("You've run out of guesses. Refresh the page to run again.")
+
+
+def guess_game(difficulty):
+    guess = random.randint(1, 100)
+    if difficulty == "easy":
+        guess_procedure(guess, 10)
+    if difficulty == "hard":
+        guess_procedure(guess, 5)
+
+print("Welcome to the Number Guessing Game!\nI'm thinking of an integer between 1 and 100.")
+difficulty = input("Choose a difficulty level. Type 'easy' or 'hard': ").lower()
+guess_game(difficulty)
