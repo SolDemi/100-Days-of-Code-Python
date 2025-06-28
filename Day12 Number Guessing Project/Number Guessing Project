@@ -2,8 +2,8 @@ import random
 
 def compare(truth, tem_guess, remain_trials):
     """
-    比较两数差异
-    :return 剩余比较次数
+    Compare the user's guess with the target number
+    :return: remaining attempts (-1 if correct)
     """
     tem_guess = round(float(tem_guess)) # to avoid type in float like 62.5
     if tem_guess > truth:
@@ -21,13 +21,13 @@ def compare(truth, tem_guess, remain_trials):
 
 def guess_procedure(guess, remain_trials):
     """
-    逐步猜测数字
+    every trial
     """
     while remain_trials > 0 :
         uesr_guess = input(f"You have {remain_trials} attempts remaining to guess the number.\nMake a guess:  ")
         remain_trials = compare(guess, uesr_guess, remain_trials)
         if remain_trials == 0:
-            print("You've run out of guesses. Refresh the page to run again.")
+            print("You've run out of guesses.")
 
 def guess_game(difficulty):
     print("Welcome to the Number Guessing Game!\nI'm thinking of an integer between 1 and 100.")
